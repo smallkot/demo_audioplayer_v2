@@ -17,8 +17,6 @@
 		A9BEFFB51B369E180076F6DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BEFFB41B369E180076F6DC /* Foundation.framework */; };
 		A9BEFFB71B369E1E0076F6DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BEFFB61B369E1E0076F6DC /* UIKit.framework */; };
 		A9BEFFB91B369E260076F6DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BEFFB81B369E260076F6DC /* CoreGraphics.framework */; };
-		A9BEFFBB1B369ECF0076F6DC /* audiofile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9BEFFBA1B369ECF0076F6DC /* audiofile.mp3 */; };
-		A9D9E8491B34AE4200F408F9 /* Felix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9D9E8481B34AE4200F408F9 /* Felix.mp3 */; };
 		A9DC331D1B31EFF100B55F7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DC331C1B31EFF100B55F7D /* main.m */; };
 		A9DC33201B31EFF100B55F7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DC331F1B31EFF100B55F7D /* AppDelegate.m */; };
 		A9DC33261B31EFF100B55F7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9DC33241B31EFF100B55F7D /* Main.storyboard */; };
@@ -54,8 +52,6 @@
 		A9BEFFB41B369E180076F6DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A9BEFFB61B369E1E0076F6DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9BEFFB81B369E260076F6DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A9BEFFBA1B369ECF0076F6DC /* audiofile.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audiofile.mp3; sourceTree = "<group>"; };
-		A9D9E8481B34AE4200F408F9 /* Felix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Felix.mp3; sourceTree = "<group>"; };
 		A9DC33171B31EFF100B55F7D /* demo_music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo_music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9DC331B1B31EFF100B55F7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9DC331C1B31EFF100B55F7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -169,8 +165,6 @@
 				A98EBEDC1B384DC100D90C17 /* pause.png */,
 				A98EBEDD1B384DC100D90C17 /* play.png */,
 				A98EBEDE1B384DC100D90C17 /* prev.png */,
-				A9BEFFBA1B369ECF0076F6DC /* audiofile.mp3 */,
-				A9D9E8481B34AE4200F408F9 /* Felix.mp3 */,
 				A9DC33751B31F21200B55F7D /* playlist.txt */,
 			);
 			path = Resources;
@@ -263,9 +257,7 @@
 				A9DC33261B31EFF100B55F7D /* Main.storyboard in Resources */,
 				A9DC332B1B31EFF100B55F7D /* LaunchScreen.xib in Resources */,
 				A98EBEE21B384DC100D90C17 /* prev.png in Resources */,
-				A9BEFFBB1B369ECF0076F6DC /* audiofile.mp3 in Resources */,
 				A9DC33281B31EFF100B55F7D /* Images.xcassets in Resources */,
-				A9D9E8491B34AE4200F408F9 /* Felix.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
