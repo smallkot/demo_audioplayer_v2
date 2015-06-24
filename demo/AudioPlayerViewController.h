@@ -10,6 +10,9 @@
 #import "AudioControlPanel.h"
 #import "TrackCell.h"
 #import <AVFoundation/AVAudioPlayer.h>
+#import <AVFoundation/AVAsset.h>
+#import <AVFoundation/AVMetadataItem.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface AudioPlayerViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UISlider *sliderTrack;
@@ -18,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 
 @property NSTimer *timer;
+@property BOOL isPlay;
 
 - (IBAction)playSound:(id)sender;
 - (IBAction)prevSound:(id)sender;

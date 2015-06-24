@@ -26,6 +26,7 @@
 		A9DC332B1B31EFF100B55F7D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9DC33291B31EFF100B55F7D /* LaunchScreen.xib */; };
 		A9DC33371B31EFF100B55F7D /* demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DC33361B31EFF100B55F7D /* demoTests.m */; };
 		A9DC33761B31F21200B55F7D /* playlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = A9DC33751B31F21200B55F7D /* playlist.txt */; };
+		A9FB0B3D1B3A8F0300B78718 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9FB0B3C1B3A8F0300B78718 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		A9DC33351B31EFF100B55F7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9DC33361B31EFF100B55F7D /* demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = demoTests.m; sourceTree = "<group>"; };
 		A9DC33751B31F21200B55F7D /* playlist.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = playlist.txt; sourceTree = "<group>"; };
+		A9FB0B3C1B3A8F0300B78718 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9FB0B3D1B3A8F0300B78718 /* AudioToolbox.framework in Frameworks */,
 				A9BEFFB91B369E260076F6DC /* CoreGraphics.framework in Frameworks */,
 				A9BEFFB71B369E1E0076F6DC /* UIKit.framework in Frameworks */,
 				A9BEFFB51B369E180076F6DC /* Foundation.framework in Frameworks */,
@@ -93,6 +96,7 @@
 		A9DC330E1B31EFF100B55F7D = {
 			isa = PBXGroup;
 			children = (
+				A9FB0B3C1B3A8F0300B78718 /* AudioToolbox.framework */,
 				A9BEFFB81B369E260076F6DC /* CoreGraphics.framework */,
 				A9BEFFB61B369E1E0076F6DC /* UIKit.framework */,
 				A9BEFFB41B369E180076F6DC /* Foundation.framework */,

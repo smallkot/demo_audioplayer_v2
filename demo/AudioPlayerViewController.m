@@ -31,6 +31,7 @@
     [fm createDirectoryAtPath:createMusic withIntermediateDirectories:YES attributes:nil error:nil];
     _current_track = 0;
     self.timeTrack.text = @"0:00";
+    _isPlay = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,13 +68,18 @@
     {
         cell.LoadingLabel.hidden = NO;
         cell.LoadingIndicator.hidden = NO;
+        cell.LoadingLabel.text = _trackLinks[indexPath.row];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSData* data = [[NSData alloc] initWithContentsOfURL:url];
             [data writeToFile:music_path atomically:YES];
             dispatch_async(dispatch_get_main_queue(), ^
                            {
                                [cell.LoadingIndicator stopAnimating];
-                               cell.TrackLabel.text = fileName;
+                               NSString* trackTitle = [self getTrackTitle:[NSURL fileURLWithPath:music_path]];
+                               if([trackTitle isEqualToString:@""])
+                                   cell.TrackLabel.text = fileName;
+                               else
+                                   cell.TrackLabel.text = trackTitle;
                                cell.LoadingIndicator.hidden = YES;
                                cell.LoadingLabel.hidden = YES;
                            });
@@ -84,7 +90,12 @@
         [cell.LoadingIndicator stopAnimating];
         cell.LoadingIndicator.hidden = YES;
         cell.LoadingLabel.hidden = YES;
-        cell.TrackLabel.text = fileName;
+        
+        NSString* trackTitle = [self getTrackTitle:[NSURL fileURLWithPath:music_path]];
+        if([trackTitle isEqualToString:@""])
+            cell.TrackLabel.text = fileName;
+        else
+            cell.TrackLabel.text = trackTitle;
     }
     
     return cell;
@@ -92,9 +103,7 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    TrackCell *cell = (TrackCell*)[tableView cellForRowAtIndexPath:indexPath];
-    NSString *fileSoundName = [[cell TrackLabel] text];
-    [self play:[self urlSoundFromDirectory:@"/Music" fileSound:fileSoundName]];
+    [self playSoundToIndex:indexPath.row];
     _current_track = indexPath.row;
 }
 
@@ -114,12 +123,14 @@
             [_audioPlayer pause];
             [self.playButton setBackgroundImage:[UIImage imageNamed:@"play.png"]
                                        forState:UIControlStateNormal];
+            _isPlay = NO;
         }
         else
         {
             [_audioPlayer play];
             [self.playButton setBackgroundImage:[UIImage imageNamed:@"pause.png"]
                                        forState:UIControlStateNormal];
+            _isPlay = YES;
         }
     }
 }
@@ -204,15 +215,16 @@
 }
 
 - (void)updateTime:(NSTimer *)timer {
-
-    self.sliderTrack.value = [self.audioPlayer currentTime];
-    self.timeTrack.text = [NSString stringWithFormat:@"%@",
-                             [self timeFormat:[self.audioPlayer currentTime]]];
-    
-    if (![self.audioPlayer isPlaying]) {
-        //[self.playButton setBackgroundImage:[UIImage imageNamed:@"play.png"]                                   forState:UIControlStateNormal];
-        //[self.audioPlayer pause];
-        [self nextPlaySound];
+    if (_isPlay == YES) {
+        self.sliderTrack.value = [self.audioPlayer currentTime];
+        self.timeTrack.text = [NSString stringWithFormat:@"%@",
+                                 [self timeFormat:[self.audioPlayer currentTime]]];
+        
+        if (![self.audioPlayer isPlaying]) {
+            //[self.playButton setBackgroundImage:[UIImage imageNamed:@"play.png"]                                   forState:UIControlStateNormal];
+            //[self.audioPlayer pause];
+            [self nextPlaySound];
+        }
     }
 }
 
@@ -243,6 +255,39 @@
                                                  repeats:YES];
     [self.playButton setBackgroundImage:[UIImage imageNamed:@"pause.png"]
                                forState:UIControlStateNormal];
+    _isPlay = YES;
+}
+
+-(NSString*)getTrackTitle:(NSURL*)fileUrl
+{
+    NSString* trackTitle = @"";
+    NSString* artist = @"";
+    NSString* title = @"";
+    AVURLAsset *mp3Asset=[AVURLAsset URLAssetWithURL:fileUrl options:nil];
+    for (NSString *format in [mp3Asset availableMetadataFormats])
+    {
+        for (AVMetadataItem *metadataItem in [mp3Asset metadataForFormat:format])
+        {
+            if ([metadataItem.commonKey isEqualToString:@"title"])
+            {
+                title = [NSString stringWithString:(NSString *)metadataItem.value];
+            }
+
+            if ([metadataItem.commonKey isEqualToString:@"artist"])
+            {
+                artist = [NSString stringWithString:(NSString *)metadataItem.value];
+            }
+        }
+    }
+    
+    if(![artist  isEqualToString: @""] || ![title  isEqualToString: @""])
+    {
+        trackTitle = [trackTitle stringByAppendingString:artist];
+        trackTitle = [trackTitle stringByAppendingString:@" - "];
+        trackTitle = [trackTitle stringByAppendingString:title];
+    }
+    
+    return trackTitle;
 }
 
 @end
